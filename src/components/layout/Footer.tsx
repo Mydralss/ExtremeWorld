@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Dumbbell, Facebook, Instagram, Twitter, Mail, PhoneCall, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, PhoneCall, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -11,8 +11,11 @@ const Footer = () => {
           {/* Logo and About */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <Dumbbell className="h-8 w-8 text-gym-blue" />
-              <span className="ml-2 text-xl font-bold">ExtremeWorld</span>
+              <img 
+                src="https://uufufh-zz.myshopify.com/cdn/shop/files/Logo.png?v=1741796847&width=200" 
+                alt="ExtremeWorld Logo" 
+                className="h-12" 
+              />
             </Link>
             <p className="text-gray-400 mb-4">
               Tu tienda especializada en equipamiento para gimnasio de alta calidad. Ofrecemos las mejores marcas y precios del mercado.

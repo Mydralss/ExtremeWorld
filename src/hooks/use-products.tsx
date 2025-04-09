@@ -13,23 +13,41 @@ export type Product = {
   Handle?: string;
   Tags?: string;
   "Variant Inventory Qty"?: string;
+  SKU?: string; // Añadir SKU para usarlo como identificador
 };
 
 export function useProducts() {
   return useQuery({
     queryKey: ['products'],
     queryFn: async () => {
+      console.log("Fetching products from Productos table...");
       const { data, error } = await supabase
         .from('Productos')
-        .select('*')
-        .order('Title', { ascending: true });
+        .select('*');
       
       if (error) {
         console.error('Error fetching products:', error);
         throw new Error(error.message);
       }
       
-      return data as Product[];
+      console.log("Products data from Productos table:", data);
+      
+      // Map database column names to expected format
+      const mappedProducts = data.map(product => ({
+        id: product.SKU || product.Handle, // Usar SKU como ID principal, con Handle como respaldo
+        title: product.Titulo,
+        "Body (HTML)": product["Descripcion HTML"],
+        "Image Src": product["Imagen URL"],
+        "Price / Colombia": product.Precio,
+        "Compare At Price / Colombia": null,
+        "Product Category": product.Categorias,
+        Handle: product.Handle,
+        Tags: product.Tipo,
+        "Variant Inventory Qty": "10", // Default value
+        SKU: product.SKU
+      }));
+      
+      return mappedProducts as Product[];
     },
   });
 }
@@ -40,6 +58,7 @@ export function useProductByHandle(handle?: string) {
     queryFn: async () => {
       if (!handle) return null;
       
+      console.log("Fetching product with handle:", handle);
       const { data, error } = await supabase
         .from('Productos')
         .select('*')
@@ -51,7 +70,26 @@ export function useProductByHandle(handle?: string) {
         throw new Error(error.message);
       }
       
-      return data as Product;
+      if (!data) return null;
+      
+      console.log("Product data:", data);
+      
+      // Map database column names to expected format
+      const mappedProduct = {
+        id: data.SKU || data.Handle, // Usar SKU como ID principal, con Handle como respaldo
+        title: data.Titulo,
+        "Body (HTML)": data["Descripcion HTML"],
+        "Image Src": data["Imagen URL"],
+        "Price / Colombia": data.Precio,
+        "Compare At Price / Colombia": null,
+        "Product Category": data.Categorias,
+        Handle: data.Handle,
+        Tags: data.Tipo,
+        "Variant Inventory Qty": "10", // Default value
+        SKU: data.SKU
+      };
+      
+      return mappedProduct as Product;
     },
     enabled: !!handle,
   });
@@ -64,18 +102,30 @@ export function useProductImages(handle?: string) {
     queryFn: async () => {
       if (!handle) return [];
       
+      console.log("Fetching product images for handle:", handle);
+      
+      // Since we don't have a separate images table, we use the main image
       const { data, error } = await supabase
         .from('Productos')
         .select('*')
-        .eq('Handle', handle)
-        .order('Image Position', { ascending: true });
+        .eq('Handle', handle);
       
       if (error) {
         console.error('Error fetching product images:', error);
         throw new Error(error.message);
       }
       
-      return data.filter(item => item["Image Src"]) as Product[];
+      console.log("Product images data:", data);
+      
+      // Map database column names to expected format
+      const mappedImages = data.map(product => ({
+        id: product.SKU || product.Handle, // Usar SKU como ID principal, con Handle como respaldo
+        "Image Src": product["Imagen URL"],
+        Handle: product.Handle,
+        SKU: product.SKU
+      }));
+      
+      return mappedImages as Product[];
     },
     enabled: !!handle,
   });

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, Dumbbell } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         isScrolled 
           ? 'bg-gym-blue shadow-sm' 
-          : 'bg-gradient-to-b from-gray-900/80 to-transparent backdrop-blur-sm'
+          : 'bg-gradient-to-b from-gray-900/80 to-transparent'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,8 +37,11 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
-              <Dumbbell className="h-8 w-8 text-white" />
-              <span className="ml-2 text-xl font-bold text-white">ExtremeWorld</span>
+              <img 
+                src="https://uufufh-zz.myshopify.com/cdn/shop/files/Logo.png?v=1741796847&width=200" 
+                alt="ExtremeWorld Logo" 
+                className="h-10" 
+              />
             </Link>
           </div>
           

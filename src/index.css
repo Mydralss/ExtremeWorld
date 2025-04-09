@@ -96,3 +96,14 @@
     @apply border-2 border-gym-blue text-gym-blue hover:bg-gym-blue/10 transition-colors font-medium py-3 px-6 rounded-md;
   }
 }
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}

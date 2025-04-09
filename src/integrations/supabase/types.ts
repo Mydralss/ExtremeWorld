@@ -9,180 +9,110 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      Productos: {
+      producto_imagenes: {
+        Row: {
+          created_at: string | null
+          handle: string | null
+          id: string
+          "Image Position": number
+          "Image Src": string | null
+        }
+        Insert: {
+          created_at?: string | null
+          handle?: string | null
+          id?: string
+          "Image Position": number
+          "Image Src"?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          handle?: string | null
+          id?: string
+          "Image Position"?: number
+          "Image Src"?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "producto_imagenes_handle_fkey"
+            columns: ["handle"]
+            isOneToOne: false
+            referencedRelation: "productos"
+            referencedColumns: ["handle"]
+          },
+        ]
+      }
+      productos: {
         Row: {
           "Body (HTML)": string | null
           "Compare At Price / Colombia": string | null
-          "Compare At Price / Internacional": string | null
-          "Cost per item": string | null
-          "Gift Card": string | null
-          "Google Shopping / Age Group": string | null
-          "Google Shopping / Condition": string | null
-          "Google Shopping / Custom Label 0": string | null
-          "Google Shopping / Custom Label 1": string | null
-          "Google Shopping / Custom Label 2": string | null
-          "Google Shopping / Custom Label 3": string | null
-          "Google Shopping / Custom Label 4": string | null
-          "Google Shopping / Custom Product": string | null
-          "Google Shopping / Gender": string | null
-          "Google Shopping / Google Product Category": string | null
-          "Google Shopping / MPN": string | null
-          Handle: string | null
-          "Image Alt Text": string | null
-          "Image Position": number | null
-          "Image Src": string | null
-          "Included / Colombia": string | null
-          "Included / Internacional": string | null
-          "Option1 Linked To": string | null
-          "Option1 Name": string | null
-          "Option1 Value": string | null
-          "Option2 Linked To": string | null
-          "Option2 Name": string | null
-          "Option2 Value": string | null
-          "Option3 Linked To": string | null
-          "Option3 Name": string | null
-          "Option3 Value": string | null
+          handle: string | null
+          id: string
           "Price / Colombia": string | null
-          "Price / Internacional": string | null
           "Product Category": string | null
-          Published: string | null
-          "SEO Description": string | null
-          "SEO Title": string | null
-          Status: string | null
-          Tags: string | null
-          Title: string | null
-          Type: string | null
-          "Variant Barcode": string | null
-          "Variant Compare At Price": string | null
-          "Variant Fulfillment Service": string | null
-          "Variant Grams": string | null
-          "Variant Image": string | null
-          "Variant Inventory Policy": string | null
+          tags: string | null
+          titulo: string | null
           "Variant Inventory Qty": string | null
-          "Variant Inventory Tracker": string | null
-          "Variant Price": string | null
-          "Variant Requires Shipping": string | null
-          "Variant SKU": string | null
-          "Variant Tax Code": string | null
-          "Variant Taxable": string | null
-          "Variant Weight Unit": string | null
-          Vendor: string | null
         }
         Insert: {
           "Body (HTML)"?: string | null
           "Compare At Price / Colombia"?: string | null
-          "Compare At Price / Internacional"?: string | null
-          "Cost per item"?: string | null
-          "Gift Card"?: string | null
-          "Google Shopping / Age Group"?: string | null
-          "Google Shopping / Condition"?: string | null
-          "Google Shopping / Custom Label 0"?: string | null
-          "Google Shopping / Custom Label 1"?: string | null
-          "Google Shopping / Custom Label 2"?: string | null
-          "Google Shopping / Custom Label 3"?: string | null
-          "Google Shopping / Custom Label 4"?: string | null
-          "Google Shopping / Custom Product"?: string | null
-          "Google Shopping / Gender"?: string | null
-          "Google Shopping / Google Product Category"?: string | null
-          "Google Shopping / MPN"?: string | null
-          Handle?: string | null
-          "Image Alt Text"?: string | null
-          "Image Position"?: number | null
-          "Image Src"?: string | null
-          "Included / Colombia"?: string | null
-          "Included / Internacional"?: string | null
-          "Option1 Linked To"?: string | null
-          "Option1 Name"?: string | null
-          "Option1 Value"?: string | null
-          "Option2 Linked To"?: string | null
-          "Option2 Name"?: string | null
-          "Option2 Value"?: string | null
-          "Option3 Linked To"?: string | null
-          "Option3 Name"?: string | null
-          "Option3 Value"?: string | null
+          handle?: string | null
+          id?: string
           "Price / Colombia"?: string | null
-          "Price / Internacional"?: string | null
           "Product Category"?: string | null
-          Published?: string | null
-          "SEO Description"?: string | null
-          "SEO Title"?: string | null
-          Status?: string | null
-          Tags?: string | null
-          Title?: string | null
-          Type?: string | null
-          "Variant Barcode"?: string | null
-          "Variant Compare At Price"?: string | null
-          "Variant Fulfillment Service"?: string | null
-          "Variant Grams"?: string | null
-          "Variant Image"?: string | null
-          "Variant Inventory Policy"?: string | null
+          tags?: string | null
+          titulo?: string | null
           "Variant Inventory Qty"?: string | null
-          "Variant Inventory Tracker"?: string | null
-          "Variant Price"?: string | null
-          "Variant Requires Shipping"?: string | null
-          "Variant SKU"?: string | null
-          "Variant Tax Code"?: string | null
-          "Variant Taxable"?: string | null
-          "Variant Weight Unit"?: string | null
-          Vendor?: string | null
         }
         Update: {
           "Body (HTML)"?: string | null
           "Compare At Price / Colombia"?: string | null
-          "Compare At Price / Internacional"?: string | null
-          "Cost per item"?: string | null
-          "Gift Card"?: string | null
-          "Google Shopping / Age Group"?: string | null
-          "Google Shopping / Condition"?: string | null
-          "Google Shopping / Custom Label 0"?: string | null
-          "Google Shopping / Custom Label 1"?: string | null
-          "Google Shopping / Custom Label 2"?: string | null
-          "Google Shopping / Custom Label 3"?: string | null
-          "Google Shopping / Custom Label 4"?: string | null
-          "Google Shopping / Custom Product"?: string | null
-          "Google Shopping / Gender"?: string | null
-          "Google Shopping / Google Product Category"?: string | null
-          "Google Shopping / MPN"?: string | null
-          Handle?: string | null
-          "Image Alt Text"?: string | null
-          "Image Position"?: number | null
-          "Image Src"?: string | null
-          "Included / Colombia"?: string | null
-          "Included / Internacional"?: string | null
-          "Option1 Linked To"?: string | null
-          "Option1 Name"?: string | null
-          "Option1 Value"?: string | null
-          "Option2 Linked To"?: string | null
-          "Option2 Name"?: string | null
-          "Option2 Value"?: string | null
-          "Option3 Linked To"?: string | null
-          "Option3 Name"?: string | null
-          "Option3 Value"?: string | null
+          handle?: string | null
+          id?: string
           "Price / Colombia"?: string | null
-          "Price / Internacional"?: string | null
           "Product Category"?: string | null
-          Published?: string | null
-          "SEO Description"?: string | null
-          "SEO Title"?: string | null
-          Status?: string | null
-          Tags?: string | null
-          Title?: string | null
-          Type?: string | null
-          "Variant Barcode"?: string | null
-          "Variant Compare At Price"?: string | null
-          "Variant Fulfillment Service"?: string | null
-          "Variant Grams"?: string | null
-          "Variant Image"?: string | null
-          "Variant Inventory Policy"?: string | null
+          tags?: string | null
+          titulo?: string | null
           "Variant Inventory Qty"?: string | null
-          "Variant Inventory Tracker"?: string | null
-          "Variant Price"?: string | null
-          "Variant Requires Shipping"?: string | null
-          "Variant SKU"?: string | null
-          "Variant Tax Code"?: string | null
-          "Variant Taxable"?: string | null
-          "Variant Weight Unit"?: string | null
-          Vendor?: string | null
+        }
+        Relationships: []
+      }
+      Productos: {
+        Row: {
+          Categorias: string | null
+          "Descripcion HTML": string | null
+          Handle: string | null
+          id: string
+          "Imagen URL": string | null
+          Precio: string | null
+          SKU: string | null
+          Tipo: string | null
+          Titulo: string | null
+          Vendedor: string | null
+        }
+        Insert: {
+          Categorias?: string | null
+          "Descripcion HTML"?: string | null
+          Handle?: string | null
+          id?: string
+          "Imagen URL"?: string | null
+          Precio?: string | null
+          SKU?: string | null
+          Tipo?: string | null
+          Titulo?: string | null
+          Vendedor?: string | null
+        }
+        Update: {
+          Categorias?: string | null
+          "Descripcion HTML"?: string | null
+          Handle?: string | null
+          id?: string
+          "Imagen URL"?: string | null
+          Precio?: string | null
+          SKU?: string | null
+          Tipo?: string | null
+          Titulo?: string | null
+          Vendedor?: string | null
         }
         Relationships: []
       }
